@@ -1,4 +1,6 @@
-# regedit
+# cihantaylan-regedit
+
+unsupported hive bug fixed, externalVbsPath undefined bug fixed.
 
 Read, Write, List and do all sorts of funky stuff to the windows registry using node.js and windows script host.
 
@@ -370,3 +372,5 @@ Result and errors should be the same as not promisified.
 ## TODO
 
 None :)
+
+#### forked from https://www.npmjs.com/package/regedit
