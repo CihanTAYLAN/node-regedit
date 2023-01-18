@@ -8,20 +8,30 @@ No pesky native code :-)
 
 ```
 npm install cihantaylan-regedit
+```
+
+```
 yarn add cihantaylan-regedit
 ```
 
 ## Example
 
 ```javascript
-const regedit = require("regedit").promisified;
+import regedit from "cihantaylan-regedit";
 
 async function main() {
-	const listResult = await regedit.list("HKCU\\SOFTWARE");
+	const reg = regedit.promisified;
+
+	/**
+	 * For webpack-native_modules or electronJS
+	 */
+	// regedit.setExternalVBSLocation(path.resolve(__dirname, "native_modules", "vbs"));
+
+	const listResult = await reg.list("HKCU\\SOFTWARE");
 	console.log(listResult);
 
-	await regedit.createKey(["HKLM\\SOFTWARE\\MyApp2", "HKCU\\SOFTWARE\\MyApp"]);
-	await regedit.putValue({
+	await reg.createKey(["HKLM\\SOFTWARE\\MyApp2", "HKCU\\SOFTWARE\\MyApp"]);
+	await reg.putValue({
 		"HKCU\\SOFTWARE\\MyApp": {
 			Company: {
 				value: "Moo corp",
@@ -56,9 +66,10 @@ regedit was originally written using callbacks, but a promise based API was adde
 
 ```js
 // callback api
-const regedit = require("regedit");
+import regedit from "cihantaylan-regedit";
 // promise api
-const promisifiedRegedit = require("regedit").promisified;
+import regedit from "cihantaylan-regedit";
+const reg = regedit.promisified;
 ```
 
 ```js
